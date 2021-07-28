@@ -5,7 +5,7 @@ const Logo = () => (
   <>
     <NextLink href="/" passHref>
       <chakra.a fontSize="2rem" fontWeight="700">
-        LOGO
+        al.
       </chakra.a>
     </NextLink>
   </>

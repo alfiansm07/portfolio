@@ -1,5 +1,5 @@
 export const tagColor = {
-  nextjs: { bgColor: "#0A7B83E2", hover: "#09686dE2" },
+  nextjs: { bgColor: "red.300", hover: "red.800" },
   javascript: { bgColor: "#ffba08", hover: "#faa307" },
   typescript: { bgColor: "#3178C6E2", hover: "#265d99E2" },
   api: { bgColor: "#E8265EE2", hover: "#ce0840E2" },

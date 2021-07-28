@@ -1,15 +1,30 @@
-import { Box, Button, Icon, Link as ChakraLink, Text } from "@chakra-ui/react"
-import { FaGithub, FaLinkedin, FaInstagram, FaCode } from "react-icons/fa"
+import {
+  Box,
+  Button,
+  Icon,
+  Link as ChakraLink,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react"
+import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa"
 
 import { MAX_WIDTH } from "config"
 
 // Fell free to add your social media accounts!
 const socialAccounts = [
-  { icon: FaGithub, path: "https://github.com/", title: "Github" },
-  { icon: FaLinkedin, path: "https://www.linkedin.com/", title: "Linkedin" },
-  { icon: FaInstagram, path: "https://www.instagram.com/", title: "Instagram" },
+  { icon: FaTwitter, path: "https://twitter.com/alpyian", title: "Twitter" },
+  {
+    icon: FaLinkedin,
+    path: "https://www.linkedin.com/in/muhammadalfiansyah/",
+    title: "Linkedin",
+  },
+  {
+    icon: FaInstagram,
+    path: "https://www.instagram.com/alfi.an",
+    title: "Instagram",
+  },
 ]
-
+// const color = useColorModeValue("whatsapp.700", "whatsapp.400")
 const Footer = () => (
   <>
     <Box as="footer">
@@ -34,13 +49,18 @@ const Footer = () => (
               key={index}
               isExternal
             >
-              <Button aria-label={item.title}>
+              <Button
+                aria-label={item.title}
+                _hover={{
+                  bg: useColorModeValue("whatsapp.400", "whatsapp.700"),
+                }}
+              >
                 <Icon as={item.icon} w="6" h="6" />
               </Button>
             </ChakraLink>
           ))}
         </Box>
-        <Box py="2">
+        <Box py="5">
           <Text>
             Built with{" "}
             <span role="img" aria-label="red heart">
@@ -74,17 +94,6 @@ const Footer = () => (
               Vercel.
             </ChakraLink>
           </Text>
-        </Box>
-        <Box py="2">
-          <ChakraLink
-            href="https://github.com/imadatyatalah/nextjs-chakra-ui-portfolio-template"
-            aria-label="source code"
-            isExternal
-          >
-            <Button aria-label="source code">
-              <Icon as={FaCode} w="6" h="6" />
-            </Button>
-          </ChakraLink>
         </Box>
       </Box>
     </Box>

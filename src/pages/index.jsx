@@ -1,31 +1,39 @@
-import { Box, Button, Heading, Text, useColorModeValue } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Heading,
+  Text,
+  useColorModeValue,
+  Link,
+} from "@chakra-ui/react"
 import { NextSeo } from "next-seo"
 import NextImage from "next/image"
-
+import Zoom from "react-reveal/Zoom"
 import { seo, data } from "config"
 
 const Home = () => {
-  const color = useColorModeValue("telegram.500", "telegram.400")
+  const color = useColorModeValue("whatsapp.700", "whatsapp.400")
 
   const isOdd = (num) => num % 2
 
-  const title = `Home | ${seo.title}`
+  const title = `${seo.title}`
   const description = seo.description
+  const canonical = seo.canonical
 
   return (
     <>
       <NextSeo
         title={title}
         description={description}
-        canonical={seo.canonical}
+        canonical={canonical}
         openGraph={{
           title,
           description,
           images: [
             {
               url: `${seo.canonical}bighead.svg`,
-              width: "350px",
-              height: "350px",
+              width: "300px",
+              height: "300px",
               alt: "avatar bigheads",
             },
           ],
@@ -40,27 +48,37 @@ const Home = () => {
         textAlign="center"
         py="4"
       >
-        <NextImage
-          src="/bighead.svg"
-          width="350"
-          height="350"
-          alt="avatar bigheads"
-          placeholder="blur"
-          blurDataURL="L5I~of#i004mgjw]-4XA00?wL#xu"
-          priority
-        />
+        <Zoom>
+          <NextImage
+            src="/bighead.svg"
+            width="300"
+            height="300"
+            alt="avatar bigheads"
+            color="red"
+            placeholder="blur"
+            blurDataURL="L5I~of#i004mgjw]-4XA00?wL#xu"
+            priority
+          />
+        </Zoom>
         <Box>
-          <Heading as="h1" fontSize="2xl" fontWeight="500" py="2">
-            Hi, I'm John Doe{" "}
+          <Heading
+            as="h1"
+            fontSize="2xl"
+            fontWeight="500"
+            py="2"
+            className="face"
+          >
+            Hi, I'm Muhammad AlfianS{" "}
             <span role="img" aria-label="hand">
               👋🏻
             </span>
           </Heading>
           <Heading fontSize={["3xl", "4xl"]} fontWeight="700">
+            Full-time{" "}
             <Text as="span" color={color}>
-              Building
+              Prayer
             </Text>{" "}
-            digital products, Brands, And experience.
+            and part-time learner
           </Heading>
           <Text py="4">
             A{" "}
@@ -71,58 +89,29 @@ const Home = () => {
             <Text as="span" fontWeight="600">
               front-end web developer
             </Text>{" "}
-            based in the US, I specialize in UI/UX design, Responsive web
-            design, And accessibility.
+            based in the Jakarta,Id. Currently working at government tax office
           </Text>
+
+          {/* <Link
+            href="https://api.whatsapp.com/send/?phone=%2B6282127272731"
+            target="_blank"
+          > */}
           <Button
-            colorScheme="telegram"
+            onClick={() =>
+              window.open(
+                "https://api.whatsapp.com/send/?phone=%2B6282127272731",
+                "_blank"
+              )
+            }
+            colorScheme="whatsapp"
             variant="ghost"
             size="lg"
-            fontSize="20px"
+            fontSize="24px"
           >
             Get in touch
           </Button>
+          {/* </Link> */}
         </Box>
-      </Box>
-
-      <Box
-        as="section"
-        d="flex"
-        alignItems="center"
-        flexDir="column"
-        textAlign={{ base: "center", lg: "left" }}
-        py="4"
-      >
-        {data.map((item, index) => (
-          <Box
-            d={{ lg: "flex" }}
-            justifyContent={{ lg: "center" }}
-            alignItems={{ lg: "center" }}
-            flexDir={{ lg: isOdd(index) == 1 && "row-reverse" }}
-            key={index}
-          >
-            <Box
-              w={{ base: "80%", lg: "35%" }}
-              mx={{ base: "auto", lg: "0" }}
-              pl={{ lg: isOdd(index) == 1 && "10" }}
-              pr={{ lg: isOdd(index) == 0 && "10" }}
-            >
-              <NextImage
-                src={item.image}
-                width="500"
-                height="500"
-                alt={item.title}
-                placeholder="blur"
-                blurDataURL="L8LE.{~60000_3V@ITx^00t:V?-P"
-              />
-            </Box>
-
-            <Box w={{ lg: "50%" }}>
-              <Heading as="h1">{item.title}</Heading>
-              <Text py="4">{item.description}</Text>
-            </Box>
-          </Box>
-        ))}
       </Box>
     </>
   )
